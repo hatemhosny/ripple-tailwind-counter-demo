@@ -1,27 +1,28 @@
+import { track } from 'ripple';
 import { Header } from './Header.ripple';
 
-export default component Counter(props: { $name: string }) {
-  let $count = 0;
+export component Counter(props: { name: string }) {
+  let count = track(0);
 
   <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-    <Header $name={props.$name} />
+    <Header name={props.name} />
     <div class="flex items-center space-x-4 mb-4">
       <button
-        onClick={() => $count--}
+        onClick={() => @count--}
         class="w-12 px-4 py-2 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition cursor-pointer"
       >
         {'-'}
       </button>
-      <span class="text-3xl font-semibold text-gray-800">{$count}</span>
+      <span class="text-3xl font-semibold text-gray-800">{@count}</span>
       <button
-        onClick={() => $count++}
+        onClick={() => @count++}
         class="w-12 px-4 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition cursor-pointer"
       >
         {'+'}
       </button>
     </div>
     <button
-      onClick={() => $count = 0}
+      onClick={() => @count = 0}
       class="px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition cursor-pointer"
     >
       {'Reset'}
